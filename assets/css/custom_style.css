@@ -1,0 +1,49 @@
+/*
+custom styles for template
+*/
+@import url("https://fonts.googleapis.com/css?family=Lato|Open+Sans");
+h1, h2, h3, h4, h5, h6, label {
+  font-family: 'Lato', sans-serif !important; }
+
+p, a {
+  font-family: 'Open Sans', sans-serif !important; }
+
+.text-bold {
+  font-weight: bold; }
+
+.main-content {
+  padding-top: 0 !important;
+  padding-bottom: 40px;
+  min-height: auto; }
+
+.page-header {
+  margin: 0;
+  padding: 24px;
+  background: white; }
+  .page-header h1, .page-header h2, .page-header h3, .page-header h4, .page-header h5, .page-header h6 {
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    font-weight: normal; }
+
+.sign-in-form {
+  width: 40%; }
+  .sign-in-form .sign-in-form-top {
+    background: white; }
+  .sign-in-form .log-input-left {
+    width: 100%;
+    color: #404040 !important; }
+  .sign-in-form input[type="submit"] {
+    width: 30%;
+    height: 50px;
+    font-size: 16px; }
+
+body.sign-in-up {
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  background: url("../images/bg.jpg") !important;
+  background-size: cover !important;
+  background: red; }
+  body.sign-in-up #page-wrapper {
+    background: none !important; }
