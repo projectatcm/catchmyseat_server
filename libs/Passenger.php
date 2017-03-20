@@ -5,14 +5,14 @@ require_once 'DbConnection.php';
 class Passenger extends Dbconnection {
 
     
-    public function setPassengerData($name, $mobile, $email,$password,$gcm_id,$status) {
+    public function setPassengerData($name,$email,$mobile,$password,$fcm_id,$avatar) {
         $query = "insert into passenger set "
                 . "                          name               = '$name'  ,"
                 . "                          mobile             = '$mobile' ,"
                 . "                          email              = '$email' ,"
                 . "                          password           = '$password'   ,"
-                . "                          gcm_id             = '$gcm_id'   ,"
-                . "                          status             = '$status'";
+                . "                          fcm_id             = '$fcm_id'   ,"
+                . "                          avatar             = '$avatar'";
         return $this->setData($query);
     }
 

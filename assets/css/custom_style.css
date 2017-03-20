@@ -11,6 +11,9 @@ p, a {
 .text-bold {
   font-weight: bold; }
 
+.logo {
+  background: white !important; }
+
 .main-content {
   padding-top: 0 !important;
   padding-bottom: 40px;

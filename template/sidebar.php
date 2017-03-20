@@ -2,8 +2,8 @@
         <div class="left-side sticky-left-side">
 
             <!--logo and iconic logo start-->
-            <div class="logo">					
-                <img src="assets/images/logo.png" height="44">
+            <div class="logo" style="height:60px; padding: 6px;">					
+                <img src="assets/images/logo.png" height="100%;" style="object-fit:cover;" />
             </div>
             <div class="logo-icon text-center">
                 <a href="index.html"><i class="lnr lnr-home"></i> </a>
