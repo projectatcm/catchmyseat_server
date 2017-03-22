@@ -1,34 +1,64 @@
 passenger
 ------
-id 
-name
-email
-mobile
-password
-avatar
-fcm_id
+id int
+name varchar
+mobile varchar
+password varchar
+avatar text
+device_id text
+fcm_id text
 
 Driver
 -------
-id
-name
-mobile
-email
-password
-avatar
-license
-rc_book
-fcm_id
-vehicle_no
-vehicle_type
-vehicle_name
-vehicle_image
-status
+id int 
+name varchar
+mobile varchar
+password varchar
+avatar text
+license text
+rc_book text
+devce_id text
+fcm_id text
+vehicle_no varchar
+vehicle_type varchar
+vehicle_name varchar
+vehicle_image varchar
+status int
 
 geo
 -----
-id
-driver_id
-latitude
-longitude
+id int
+driver_id int
+latitude text
+longitude text
+time time
+
+booking
+--------
+id int
+user_id int
+driver_id int
+date date
+time time
+
+
+bus
+----
+id int
+name varchar
+vehicle_no varchar
+vehicle_type varchar
+vehicle_image varchar
+latitude text
+longitude text
+
+bus_route
+----------
+id int 
+bus_id int 
+time time
+place varchar
+
+
+
 

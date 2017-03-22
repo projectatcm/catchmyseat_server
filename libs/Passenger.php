@@ -5,19 +5,19 @@ require_once 'DbConnection.php';
 class Passenger extends Dbconnection {
 
     
-    public function setPassengerData($name,$email,$mobile,$password,$fcm_id,$avatar) {
+    public function setPassengerData($name,$mobile,$password,$device_id,$fcm_id,$avatar) {
         $query = "insert into passenger set "
-                . "                          name               = '$name'  ,"
-                . "                          mobile             = '$mobile' ,"
-                . "                          email              = '$email' ,"
-                . "                          password           = '$password'   ,"
-                . "                          fcm_id             = '$fcm_id'   ,"
-                . "                          avatar             = '$avatar'";
+        . "                          name               = '$name'  ,"
+        . "                          mobile             = '$mobile' ,"
+        . "                          password           = '$password'   ,"
+        . "                          device_id          = '$device_id'   ,"
+        . "                          fcm_id             = '$fcm_id'   ,"
+        . "                          avatar             = '$avatar'";
         return $this->setData($query);
     }
 
-    public function passengerLogin($uname, $pwd) {
-        $query = "Select * from passenger where email = '$uname' OR mobile = '$uname' AND password = '$pwd'";
+    public function passengerLogin($mobile, $password) {
+        $query = "Select * from passenger where mobile = '$mobile' AND password = '$password'";
         return $this->getData($query);
     }
 
@@ -32,7 +32,7 @@ class Passenger extends Dbconnection {
     }
 
     public function getAllPassengers() {
-        $query = "select * from passenger ";
+        $query = "select * from passenger order by id desc";
         return $this->getData($query);
     }
 

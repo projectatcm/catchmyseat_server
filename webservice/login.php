@@ -1,7 +1,9 @@
 <?php 
-require_once '../libs/Users.php';
-require_once '../libs/Admin.php';
-$user = new User();
+
+require '../libs/Drivers.php';
+require '../libs/Passenger.php';
+$driver = new Drivers();
+$passenger = new Passenger();
 $response = array(
 	"status" => "error",
 	"message" => "",
@@ -14,16 +16,26 @@ if(empty($_POST)){
 $response['message'] = "form data missing";
 }
 
-$device_id = filter_input(INPUT_POST, 'device_id');
+$mobile = filter_input(INPUT_POST, 'mobile');
 $password = filter_input(INPUT_POST, 'password');
-$loginData = $user->checkLogin($device_id,$password);
-if(!empty($loginData)){
+$passengerLogin = $passenger->passengerLogin($mobile,$password);
+$driverLogin = $driver->driverLogin($mobile,$password);
+if(!empty($passengerLogin)){
+		$response['status'] = "success";
+			$response['message'] = "Welcome ".$passengerLogin[0]['name'];
+			$response['data'] = array(
+		"id" => $passengerLogin[0]['id'],
+		"name" => $passengerLogin[0]['name'],
+		"type" => "passenger"
+	);
+}else if(!empty($driverLogin)){
 	$response['status'] = "success";
-	$response['message'] = "Welcome ".$loginData[0]['name'];
+	$response['message'] = "Welcome ".$driverLogin[0]['name'];
 	$response['data'] = array(
-		"id" => $loginData[0]['id'],
-		"name" => $loginData[0]['name'],
-		"email" => $loginData[0]['email'],
+		"id" => $driverLogin[0]['id'],
+		"name" => $driverLogin[0]['name'],
+		"type" => "driver",
+                 "status" =>  $driverLogin[0]['status']
 	);
 
 }

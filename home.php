@@ -1,5 +1,17 @@
-<?php include 'log_check.php' ?>
-<?php include 'template/header.php' ?>
+<?php 
+include 'log_check.php' ;
+ include 'template/header.php' ;
+ require_once './libs/Drivers.php';
+ require_once './libs/Passenger.php';
+ $passenger = new Passenger();
+ $driver = new Drivers();
+ $passengerData = $passenger->getAllPassengers();
+ $driverData = $driver->getdriver();
+ $passenger_count = sizeof($passengerData);
+ $driver_count = sizeof($driverData);
+
+
+?>
 <body class="sticky-header"  onload="initMap()">
     <section>
       <?php include 'template/sidebar.php' ?>
@@ -13,9 +25,9 @@
                             <div class="r3_counter_box">
                                 <i class="fa fa-mail-forward"></i>
                                 <div class="stats">
-                                    <h5>450</h5>
+                                    <h5><?= $passenger_count?></h5>
                                     <div class="grow">
-                                        <p>Users</p>
+                                        <p>Passengers</p>
                                     </div>
                                 </div>
                             </div>
@@ -24,7 +36,7 @@
                             <div class="r3_counter_box">
                                 <i class="fa fa-users"></i>
                                 <div class="stats">
-                                    <h5>50</h5>
+                                    <h5><?= $driver_count;?></h5>
                                     <div class="grow grow1">
                                         <p>Drivers</p>
                                     </div>
@@ -62,15 +74,20 @@
                         <div class="activity_box">
                             <h3>New Registrations</h3>
                             <div class="scrollbar scrollbar1" id="style-2">
+                            <?php 
+
+for($i=0;$i<5;$i++){
+    
+                            ?>
                                 <div class="activity-row">
-                                    <div class="col-xs-2 activity-img"><img src='images/1.png' class="img-responsive" alt=""/></div>
+                                    <div class="col-xs-2 activity-img"><img src='<?=$passengerData[$i]['avatar']?>' class="img-responsive" alt=""/></div>
                                     <div class="col-xs-8 activity-desc">
-                                        <h5><a href="#">John Smith</a></h5>
-                                        <p>Hey ! There I'm available.</p>
+                                        <h5><a href="#"><?=$passengerData[$i]['name']?></a></h5>
+                                        <p><?=$passengerData[$i]['mobile']?></p>
                                     </div>
-                                    <div class="col-xs-2 activity-desc1"><h6>13:40 PM</h6></div>
                                     <div class="clearfix"> </div>
                                 </div>
+                                <?php }?>
                             </div>
                         </div>
                     </div>
