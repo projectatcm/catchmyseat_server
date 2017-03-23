@@ -68,5 +68,9 @@ class Drivers extends Dbconnection {
         $query = "select status from driver where id ='$id'";
        return $this->getData($query);
     }
+     public function updateFcmID($id,$fcm_id){
+        $query = "UPDATE driver set fcm_id = '$fcm_id' WHERE id = '$id'";
+        return $this->setData($query);
+    }
 
 }

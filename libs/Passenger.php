@@ -35,5 +35,10 @@ class Passenger extends Dbconnection {
         $query = "select * from passenger order by id desc";
         return $this->getData($query);
     }
+    
+    public function updateFcmID($id,$fcm_id){
+        $query = "UPDATE passenger set fcm_id = '$fcm_id' WHERE id = '$id'";
+        return $this->setData($query);
+    }
 
 }

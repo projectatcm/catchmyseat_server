@@ -18,9 +18,12 @@ $response['message'] = "form data missing";
 
 $mobile = filter_input(INPUT_POST, 'mobile');
 $password = filter_input(INPUT_POST, 'password');
+$fcm_id = filter_input(INPUT_POST, 'fcm_id');
 $passengerLogin = $passenger->passengerLogin($mobile,$password);
 $driverLogin = $driver->driverLogin($mobile,$password);
+//print_r($_POST);
 if(!empty($passengerLogin)){
+    $passenger->updateFcmID($passengerLogin[0]['id'],$fcm_id);
 		$response['status'] = "success";
 			$response['message'] = "Welcome ".$passengerLogin[0]['name'];
 			$response['data'] = array(
@@ -29,6 +32,7 @@ if(!empty($passengerLogin)){
 		"type" => "passenger"
 	);
 }else if(!empty($driverLogin)){
+     $driver->updateFcmID($driverLogin[0]['id'],$fcm_id);
 	$response['status'] = "success";
 	$response['message'] = "Welcome ".$driverLogin[0]['name'];
 	$response['data'] = array(
