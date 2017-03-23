@@ -9,7 +9,11 @@ $response = array(
     "message" => "",
     "data" => array()
 );
-
+function base64Image($image_path) {
+    $data = file_get_contents($image_path);
+    $base64 = base64_encode($data);
+    return $base64;
+}
 function distance($lat1, $lon1, $lat2, $lon2, $unit) {
     /*
       This uses the ‘haversine’ formula to calculate the great-circle distance between two points – that is, the shortest distance over the earth’s surface – giving an ‘as-the-crow-flies’ distance between the points (ignoring any hills they fly over, of course!).
@@ -50,8 +54,13 @@ if (!empty($_POST)) {
         if (empty($driver_data)) {
             continue;
         }
-        $driver_data[0]['photo'] = base64Image($driver_data[0]['photo']);
-        $geo['distance'] = distance($latitude, $longitde, $driver_lat, $driver_lng, 'K');
+        $driver_data[0]['avatar'] = base64Image('../'.$driver_data[0]['avatar']);
+        $distance = distance($latitude, $longitde, $driver_lat, $driver_lng, 'K');
+        $distance = round($distance,2);
+        if($distance < 1){
+         $distance = $distance * 100 ." meters";   
+        }
+        $geo['distance'] = $distance;
         $geo['data'] = $driver_data[0];
         $data[] = $geo;
     }

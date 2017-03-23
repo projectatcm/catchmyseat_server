@@ -47,7 +47,21 @@ foreach ($geo_data as $geo) {
     $geo['data'] = $driver_data[0];
     $data[] = $geo;
 }
-
+/*-----colors-----*/
+$colors = array(
+    "car" => array(
+        "color" => "#6991FD",
+        "icon" => "http://maps.google.com/mapfiles/ms/icons/blue-dot.png" 
+    ),
+    "auto" => array(
+        "color" => "#FDF569",
+        "icon" => "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png" 
+    ),
+    "me" => array(
+        "color" => "#FB7064",
+        "icon" => ""
+    )
+);
 if (!empty($data)) {
     $response['data'] = $data;
     $response['status'] = "success";
@@ -65,7 +79,7 @@ if (!empty($data)) {
             function initMap() {
                 var uluru = {lat: <?= $latitude ?>, lng: <?= $longitde ?>};
                 var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 14,
+                    zoom: 18,
                     center: uluru
                 });
                 var goldStar = {
@@ -83,12 +97,18 @@ if (!empty($data)) {
                 <?php foreach ($data as $d){
                     $distance = $d['distance'];
                     if($distance > 2){
-                        continue;
+                       // continue;
                     }
                     ?>
-                             var marker = new google.maps.Marker({
+                            
+                    var marker = new google.maps.Marker({
                     position: {lat: <?= $d['latitude'] ?>, lng: <?= $d['longitude'] ?>},
-                    icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+                   title:"<?=$d['data']['name']?>",
+                    <?php if($d['data']['vehicle_type'] == "Car"){?>
+                    icon: '<?=$colors['car']['icon']?>',
+                    <?php }else if($d['data']['vehicle_type'] == "Auto Rickshaw"){?>
+                       icon: '<?=$colors['auto']['icon']?>',   
+                    <?php }?>
                     map: map
                 });
                             <?php
@@ -97,8 +117,42 @@ if (!empty($data)) {
         </script>
     </head>
     <body class="sticky-header" onload="initMap()">
-        <div id="map" style="width:500px; height:500px;"></div>
+        <div id="map" style="width:100%; height:100%;"></div>
+        <div class="map_info">
+            <ul>
+                <li class="car"><i style="background: <?=$colors['car']['color']?>;"></i> Car</li>
+                <li class="auto"><i style="background: <?=$colors['auto']['color']?>"></i> Auto Riksaw</li>
+                <li class="auto"><i style="background: <?=$colors['me']['color']?>"></i> You</li>
+            </ul>
+        </div>
+        <style type="text/css">
+            .map_info{
+                width: 100%;
+                background: rgba(255,255,255,0.9);
+                position: fixed;
+                bottom:0;
+                padding: 8px 20px;
+                left:0;right:0;
+            }
+            .map_info ul{
+                margin: 0;
+                padding:0;
+                list-style: none;
+            }
+            .map_info ul li{
+                font-size: 12px;
+                float: left;
+                                margin: 0 5px;
 
+            }
+            .map_info ul li i{
+                width:12px;
+                height:12px;
+                margin-right: 5px;
+                border-radius: 50%;
+                display: inline-block;
+            }
+        </style>
 
     </body>
 </html>

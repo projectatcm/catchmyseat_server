@@ -7,21 +7,25 @@ $drivers  = new Drivers();
 $passenger = new Passenger();
 
 
-$user_id = $_POST['id'];
+$id = $_POST['id'];
 $title = $_POST['title'];
 $message = $_POST['message'];
 $user_type = $_POST['type'];
-
+$fcm_id = "";
 if($user_type == "driver"){
     $driver_data = $drivers->getDriverDataById($id);
     $driver_fcm_token = $driver_data[0]['fcm_id'];
-    echo $driver_fcm_token;
+    $fcm_id = $driver_fcm_token;
 }
-exit();
+if($user_type == "passenger"){
+    $driver_data = $passenger->getPassengerDataById($id);
+    $driver_fcm_token = $driver_data[0]['fcm_id'];
+    $fcm_id = $driver_fcm_token;
+}
 
-$pushMessage->send(array(),array(
-	'message' 	=> 'here is a message. message',
-	'title'		=> 'This is a title. title',
+$pushMessage->send(array($fcm_id),array(
+	'message' 	=> $message,
+	'title'		=> $title,
 	'subtitle'	=> 'This is a subtitle. subtitle',
 	'tickerText'	=> 'Ticker text here...Ticker text here...Ticker text here',
 	'vibrate'	=> 1,
@@ -29,5 +33,7 @@ $pushMessage->send(array(),array(
 	'largeIcon'	=> 'large_icon',
 	'smallIcon'	=> 'small_icon'
 ));
-
-?>
+echo "<script>"
+. "alert('Message sended !');"
+        . "window.history.back();"
+        . "</script>";

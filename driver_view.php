@@ -165,19 +165,23 @@ $location = $drivers->getLocation($id);
                                     </div>
                                 <?php } ?>
                                 <hr>
-                                <form class="" style="padding-right: 30px;">
-                                    <h4>Message (Via Firebase)</h4>
-                                    <hr>
-                                    <label>Title</label>
-                                    <input type="text" class="form-control" name="title" placeholder="Message title">
-                                    <br>
-                                    <label>Message Body</label>
-                                    <textarea class="form-control" name="message" placeholder="Message Body"> </textarea>
-                                    <br>
-                                    <button class="btn btn-primary" type="submit" style="width: 150px;">
-                                        <i  class="fa fa-send"></i> Send
-                                    </button>
-                                </form>
+                                   
+                <form class="" method="post" action="actions/send_push_message.php" style="padding-right: 30px;">
+                   <h4>Message</h4>
+                   <hr>
+                   <label>Title</label>
+                   <input type="hidden" name="id" value="<?=$id;?>">
+                   <input type="hidden" name="type" value="driver">
+                   <input type="text" class="form-control" name="title" placeholder="Message title">
+                   <br>
+                    <label>Message Body</label>
+                   <textarea class="form-control" name="message" placeholder="Message Body"> </textarea>
+                   <br>
+                   <button class="btn btn-primary" type="submit" style="width: 150px;">
+                       <i  class="fa fa-send"></i> Send
+                   </button>
+               </form>
+          
                             </div>
                         </div>
                     </div>

@@ -71,10 +71,12 @@ $avatar = $passengerData['avatar'];
         </div>
         <div class="col-md-9 clear-padding-right">
             <div class="profile-content">
-               <form class="" style="padding-right: 30px;">
+                <form class="" method="post" action="actions/send_push_message.php" style="padding-right: 30px;">
                    <h4>Message</h4>
                    <hr>
                    <label>Title</label>
+                   <input type="hidden" name="id" value="<?=$id;?>">
+                   <input type="hidden" name="type" value="passenger">
                    <input type="text" class="form-control" name="title" placeholder="Message title">
                    <br>
                     <label>Message Body</label>
