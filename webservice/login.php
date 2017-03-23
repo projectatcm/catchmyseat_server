@@ -35,7 +35,7 @@ if(!empty($passengerLogin)){
 		"id" => $driverLogin[0]['id'],
 		"name" => $driverLogin[0]['name'],
 		"type" => "driver",
-                 "status" =>  $driverLogin[0]['status']
+        "status" =>  $driverLogin[0]['status']
 	);
 
 }

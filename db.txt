@@ -14,15 +14,15 @@ id int
 name varchar
 mobile varchar
 password varchar
-avatar text
-license text
-rc_book text
+avatar text *
+license text*
+rc_book text*
 devce_id text
 fcm_id text
 vehicle_no varchar
 vehicle_type varchar
 vehicle_name varchar
-vehicle_image varchar
+vehicle_image varchar*
 status int
 
 geo

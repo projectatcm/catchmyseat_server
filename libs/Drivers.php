@@ -31,20 +31,20 @@ class Drivers extends Dbconnection {
             $query = "select * from driver order by id desc";
        }
         return $this->getData($query);
-    } 
+    }
     public function getDriverDataById($id) {
         $query = "select * from driver where id ='$id'";
         return $this->getData($query);
-    }   
+    }
     public function updateLocation($driver_id,$latitude,$longitude){
         $geo_data = $this->getData("SELECT * FROM geo where driver_id = '$driver_id'");
         if(empty($geo_data)){
-           $this->setData("INSERT INTO geo set driver_id = '$driver_id'"); 
+           $this->setData("INSERT INTO geo set driver_id = '$driver_id'");
         }else{
-             $this->setData("UPDATE geo set latitude = '$latitude',longitude = '$longitude' where driver_id = '$driver_id'"); 
+             $this->setData("UPDATE geo set latitude = '$latitude',longitude = '$longitude' where driver_id = '$driver_id'");
         }
-    }  
-     
+    }
+
     public function acceptDriver($id){
         $query = "UPDATE driver set status = '1' where id = '$id'";
        return $this->setData($query);
@@ -53,15 +53,20 @@ class Drivers extends Dbconnection {
         $query = "delete from driver where id = '$id'";
        return $this->setData($query);
     }
-    
+
     public function getLocation($id){
          $query = "select * from geo where driver_id ='$id'";
         return $this->getData($query);
     }
-    
+
     public function setData($query) {
         $response = mysqli_query($this->connection, $query) or die(mysqli_error($this->connection));
         return mysqli_insert_id($this->connection);
     }
-  
+
+    public function getDriverStatus($id){
+        $query = "select status from driver where id ='$id'";
+       return $this->getData($query);
+    }
+
 }
