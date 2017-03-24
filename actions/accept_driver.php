@@ -11,10 +11,10 @@ $driver_data = $drivers->getDriverDataById($id);
 $drivers->acceptDriver($id);
 
 $pushMessage->send(array($fcm_id),array(
+    	'type'	=> 'notification',
 	'message' 	=> "Your Profile is Verified",
 	'title'		=> "Welcome",
 	'subtitle'	=> 'This is a subtitle. subtitle',
-	'tickerText'	=> 'Ticker text here...Ticker text here...Ticker text here',
 	'vibrate'	=> 1,
 	'sound'		=> 1,
 	'largeIcon'	=> 'large_icon',

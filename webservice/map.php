@@ -97,7 +97,7 @@ if (!empty($data)) {
                 <?php foreach ($data as $d){
                     $distance = $d['distance'];
                     if($distance > 2){
-                       // continue;
+                        continue;
                     }
                     ?>
                             

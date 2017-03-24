@@ -42,7 +42,7 @@ if (!empty($_POST)) {
     }else{
        $avatar_save_path = "";
    }
-   $user_id = $passenger->setPassengerData($name, $mobile, $password, $avatar_save_path, $device_id,$fcm_id);
+   $user_id = $passenger->setPassengerData($name, $mobile, $password, $device_id,$fcm_id,$avatar_save_path);
    if($user_id){
     $response['status'] = "success";
     $response['message'] = "Welcome to Catch My Ride !";

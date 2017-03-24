@@ -24,6 +24,7 @@ if($user_type == "passenger"){
 }
 
 $pushMessage->send(array($fcm_id),array(
+    'type'	=> 'notification',
 	'message' 	=> $message,
 	'title'		=> $title,
 	'subtitle'	=> 'This is a subtitle. subtitle',
