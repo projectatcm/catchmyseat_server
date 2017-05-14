@@ -26,7 +26,7 @@
                                 <input type="submit" value="Login" class="pull-right">
                             </div>
                             <div class="clearfix"></div>
-                        </form>	 
+                        </form>
                     </div>
 
                 </div>

@@ -20,7 +20,10 @@ class Passenger extends Dbconnection {
         $query = "Select * from passenger where mobile = '$mobile' AND password = '$password'";
         return $this->getData($query);
     }
-
+ public function deletePassenger($id){
+        $query = "delete from passenger where id = '$id'";
+       return $this->setData($query);
+    }
     public function getPassengerDataByEmailId($email) {
         $query = "select * from passenger where email ='$email'";
         return $this->getData($query);

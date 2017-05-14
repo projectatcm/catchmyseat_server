@@ -13,7 +13,7 @@ if (!empty($_POST)) {
    $driver_id = filter_input(INPUT_POST,'driver_id');
         $latitude =filter_input(INPUT_POST,'latitude');
         $longitude =filter_input(INPUT_POST,'longitude');
-       
+       $driver->updateDriverStatus($driver_id,2);
       $driver->updateLocation($driver_id, "$latitude", "$longitude");
        $response['status'] = "success";
        $response['message'] = "Location updated";

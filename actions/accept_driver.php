@@ -12,6 +12,7 @@ $drivers->acceptDriver($id);
 
 $pushMessage->send(array($fcm_id),array(
     	'type'	=> 'notification',
+    	"meta" => "login",
 	'message' 	=> "Your Profile is Verified",
 	'title'		=> "Welcome",
 	'subtitle'	=> 'This is a subtitle. subtitle',

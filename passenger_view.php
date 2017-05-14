@@ -61,7 +61,11 @@ $avatar = $passengerData['avatar'];
                           <li> <br></li>
                            <li> </li>
                         <li>
-                           <button type="button" class="btn btn-danger btn-sm form-control">Delete </button>
+                             <a href="actions/delete_passenger.php?id=<?= $id; ?>" onclick="javascript:if (!confirm('Are you sure to continue ?')) {
+                                          return false;
+                                      }">
+                                                <button type="button" class="btn btn-danger btn-sm form-control">Delete </button>
+                                            </a>
                         </li>
                       
                     </ul>

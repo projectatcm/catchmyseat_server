@@ -29,7 +29,7 @@ $location = $drivers->getLocation($id);
     <section>
 <?php include 'template/sidebar.php' ?>
         <!-- main content start-->
-        <div class="main-content">			
+        <div class="main-content">
             <div id="page-wrapper">
                 <h3 class="page-header">
                     Passenger Info
@@ -49,10 +49,21 @@ $location = $drivers->getLocation($id);
 
                                     <div class="profile-usertitle-job">
                                         <h4><strong> <?= $name; ?></strong>
+                                        <br><br>
+                                        <?php if ($status == 1): ?>
+                                                <label
+                                                    style="font-size:12px; padding:10px;background: #5a88ff;padding:5px 8px; color:#f5f5f5;; font-weight: bold"
+                                                    >Not Active</t>
+<?php endif; ?>
 <?php if ($status == 2): ?>
                                                 <label
-                                                    style="font-size:6px;background: #32ae7f;padding:5px 8px; color:#f5f5f5;; font-weight: bold"
+                                                    style="font-size:12px; padding:10px; background: #32ae7f;padding:5px 8px; color:#f5f5f5;; font-weight: bold"
                                                     >Active now</label>
+<?php endif; ?>
+<?php if ($status == 3): ?>
+                                                <label
+                                                    style="font-size:12px; padding:10px;background: #262626;padding:5px 8px; color:#e9b330;; font-weight: bold"
+                                                    >Hired Now</label>
 <?php endif; ?>
                                         </h4>
                                     </div>
@@ -85,7 +96,7 @@ $location = $drivers->getLocation($id);
 <?php else: ?>
                                             <li>
                                                 <a href="actions/reject_driver.php?id=<?= $id; ?>">
-                                                    <button type="button" class="btn btn-warning btn-sm form-control">Reject Driver </button>
+                                                    <button type="button" style="background: #e9b330" class="btn btn-default btn-sm form-control">Reject Driver </button>
                                                 </a>
                                             </li>
 
@@ -124,7 +135,7 @@ $location = $drivers->getLocation($id);
                                         <td><strong><?= $vehicle_no ?></strong></td>
                                     </tr>
                                 </table>
-                                <div> 
+                                <div>
                                     <h4>Licence</h4>
                                     <hr>
                                     <img src="<?= $licence ?>" height="300px" style="object-fit: cover;">
@@ -141,7 +152,7 @@ $location = $drivers->getLocation($id);
                                     <hr>
                                     <img src="<?= $vehicle_image ?>" height="300px" style="object-fit: cover;">
                                 </div>
-                                <?php if (!empty($location)) { 
+                                <?php if (!empty($location)) {
                                     $latitude  = $location[0]['latitude'];
                                     $longitude = $location[0]['longitude'];
                                     ?>
@@ -165,7 +176,7 @@ $location = $drivers->getLocation($id);
                                     </div>
                                 <?php } ?>
                                 <hr>
-                                   
+
                 <form class="" method="post" action="actions/send_push_message.php" style="padding-right: 30px;">
                    <h4>Message</h4>
                    <hr>
@@ -181,7 +192,7 @@ $location = $drivers->getLocation($id);
                        <i  class="fa fa-send"></i> Send
                    </button>
                </form>
-          
+
                             </div>
                         </div>
                     </div>

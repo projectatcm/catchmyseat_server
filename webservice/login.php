@@ -33,6 +33,7 @@ if(!empty($passengerLogin)){
 	);
 }else if(!empty($driverLogin)){
      $driver->updateFcmID($driverLogin[0]['id'],$fcm_id);
+      $driver->updateDriverStatus($driverLogin[0]['id'],1);
 	$response['status'] = "success";
 	$response['message'] = "Welcome ".$driverLogin[0]['name'];
 	$response['data'] = array(

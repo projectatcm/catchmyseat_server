@@ -33,9 +33,10 @@ class Drivers extends Dbconnection {
         return $this->getData($query);
     }
     public function getDriverDataById($id) {
-        $query = "select * from driver where id ='$id'";
+        $query = "select * from driver where id ='$id' ";
         return $this->getData($query);
     }
+
     public function updateLocation($driver_id,$latitude,$longitude){
         $geo_data = $this->getData("SELECT * FROM geo where driver_id = '$driver_id'");
         if(empty($geo_data)){
@@ -47,6 +48,10 @@ class Drivers extends Dbconnection {
 
     public function acceptDriver($id){
         $query = "UPDATE driver set status = '1' where id = '$id'";
+       return $this->setData($query);
+    }
+    public function rejectDriver($id){
+        $query = "UPDATE driver set status = '0' where id = '$id'";
        return $this->setData($query);
     }
      public function deleteDriver($id){
@@ -70,6 +75,10 @@ class Drivers extends Dbconnection {
     }
      public function updateFcmID($id,$fcm_id){
         $query = "UPDATE driver set fcm_id = '$fcm_id' WHERE id = '$id'";
+        return $this->setData($query);
+    }
+     public function updateDriverStatus($id,$status) {
+        $query = "update driver set status = '$status' where id ='$id'";
         return $this->setData($query);
     }
 

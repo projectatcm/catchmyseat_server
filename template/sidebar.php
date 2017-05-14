@@ -14,7 +14,7 @@
 
         <!--sidebar nav start-->
         <ul class="nav nav-pills nav-stacked custom-nav">
-            <li class="active"><a href="index.html"><i class="lnr lnr-power-switch"></i><span>Dashboard</span></a>
+            <li class="active"><a href="home    .php"><i class="lnr lnr-power-switch"></i><span>Dashboard</span></a>
             </li>
             <li>
                 <a href="passengers.php"><i class="lnr lnr-power-switch"></i><span>Passengers</span></a>

@@ -9,7 +9,7 @@ var paths = {
 
 
 
-//sass task 
+//sass task
 gulp.task('sass',function(){
 	console.log("on sass task");
 	gulp.src(paths.sass_src+"/**/*.scss")
